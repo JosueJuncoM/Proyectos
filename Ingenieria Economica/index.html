@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Proyecto Ingenieria Economica</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <script type="text/javascript" src="js/Opciones_Cuota.js"></script>
+  <script src="jspdf/dist/jspdf.min.js"></script>
+  <script src="js/jspdf.plugin.autotable.min.js"></script>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body>
+
+  <div class="datos_formulario">
+    <form name="formulario" id="formulario" class="form">
+      <div class="form-header">
+        <center>
+          <img src="css/Logo.png">
+        </center>
+        <h3 class="form-title">JOSUE LEONARDO JUNCO MARTINEZ</h3>
+      </div>
+      <!-- Nombre del cliente -->
+      <label for="nombre_usuario" class="form-label">Nombre del cliente:</label>
+      <input type="text" name="nombre_usuario" id="nombre_usuario" class="form-input" required placeholder="Escriba su nombre" onkeyup="form_nombre()" />
+      <!-- Cedula del cliente -->
+      <label for="usuario_cedula" class="form-label">Cedula:</label>
+      <input type="text" name="usuario_cedula" id="usuario_cedula" class="form-input" placeholder="C.C" required onchange="form_cedula()" maxlength="13" />
+      <!-- Monto del cliente -->
+      <label for="usuario_monto" class="form-label">Monto:</label>
+      <input type="text" name="usuario_monto" id="usuario_monto" class="form-input" required placeholder="$" onchange="form_monto()" />
+      <!-- Tipos de credito -->
+      <label for="credito" class="form-label">Credito:</label>
+      <div class="radio">
+        <input type="radio" name="credito" id="credito_Cf" class="form-input-radio" onchange="mostrar('credito_Cf');" />
+        <label for="credito_Cf">Cuota Fija</label>
+        <input type="radio" name="credito" id="credito_Pg" class="form-input-radio" onchange="mostrar('credito_Pg');" />
+        <label for="credito_Pg">Perido de Gracia</label>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- Formulario Cuota fija -->
+  <div id="credito_Cf1" class="form-cf-datos" style="display: none;">
+    <div class="form-header">
+      <h2 class="form-title-cf">Cuota Fija</h2>
+    </div>
+    <form name="form_Cf" id="form_Cf">
+      <!-- Plazos -->
+      <label for="opc_plazo_cf" class="form-label">Plazos:</label>
+      <select id="opc_plazo_cf" name="opc_plazo_cf">
+        <option value="36">36 meses</option>
+        <option value="48">48 meses</option>
+        <option value="60">60 meses</option>
+        <option value="72">72 meses</option>
+        <option value="84">84 meses</option>
+      </select>
+      <br>
+      <br>
+      <!-- Amortizacion -->
+      <label for="opc_amort_cf" class="form-label">Amortizacion:</label>
+      <select id="opc_amort_cf" name="opc_amort_cf">
+        <option value="mensual">Mensual</option>
+        <option value="bimestral">Bimestral</option>
+      </select>
+      <br>
+      <br>
+      <!-- Tasa de interes -->
+      <h3 class="form-title-cf-ts">Tasa de interes:</h3>
+      <label for="tasa_EA_cf" class="form-label">Efectiva anual (EA)</label>
+      <input type="text" name="tasa_EA_cf" id="tasa_EA_cf" class="form-input" placeholder="%" onchange="calcular_tasa_cf('EA')" />
+      <br>
+      <label for="tasa_NA_cf" class="form-label">Nominal anual (NA)</label>
+      <input type="text" name="tasa_NA_cf" id="tasa_NA_cf" class="form-input" placeholder="%" onchange="calcular_tasa_cf('NA')" />
+      <br>
+      <label for="tasa_Ip_cf" class="form-label">Interes periodico (Ip)</label>
+      <input type="text" name="tasa_Ip_cf" id="tasa_Ip_cf" class="form-input" placeholder="%" onchange="calcular_tasa_cf('Ip')" />
+      <br>
+      <br>
+      <button id="button_cf" class="form-cf-button" onclick="return false;">Generar Cuadro</button>
+    </form>
+  </div>
+
+  <!-- Cuadro preview -->
+  <div id="credito_cf_prev" class="form-credito-cf-prev" style="display: none;">
+    <button id="button_cf_prev" class="form-cf-button-prev" onclick="return false;">Descargar Pdf</button>
+    <div class="form-header-cf-prev">
+      <h2 class="form-title-cf-prev">Vista previa</h2>
+    </div>
+  </div>
+
+
+
+  <!-- Formulario Peridodo de Gracia -->
+  <div id="credito_Pg1" class="form-pg-datos" style="display: none;">
+    <div class="form-header">
+      <h2 class="form-title-pg">Periodo de Gracia</h2>
+    </div>
+    <form name="form_Pg" id="form_Pg">
+      <!-- Plazo Periodo de gracia -->
+      <label for="opc_plazopg_Pg" class="form-label">Plazo Perido de Gracia:</label>
+      <select id="opc_plazopg_Pg" name="opc_plazopg_Pg">
+        <option value="24">24 meses</option>
+        <option value="36">36 meses</option>
+      </select>
+      <br>
+      <br>
+      <!-- Plazos -->
+      <label for="opc_plazo_Pg" class="form-label">Plazos:</label>
+      <select id="opc_plazo_Pg" name="opc_plazo_Pg">
+        <option value="60">60 meses</option>
+        <option value="72">72 meses</option>
+        <option value="84">84 meses</option>
+        <option value="96">96 meses</option>
+        <option value="108">108 meses</option>
+        <option value="120">120 meses</option>
+      </select>
+      <br>
+      <br>
+      <!-- Amortizacion -->
+      <label for="opc_amort_Pg" class="form-label">Amortizacion:</label>
+      <select id="opc_amort_Pg" name="opc_amort_Pg">
+        <option value="mensual">Mensual</option>
+        <option value="trimestral">Trimestral</option>
+      </select>
+      <br>
+      <br>
+      <!-- Tasa de interes -->
+      <h3 class="form-title-pg-ts">Tasa de interes:</h3>
+      <label for="tasa_EA_Pg" class="form-label">Efectiva anual</label>
+      <input type="text" name="tasa_EA_Pg" id="tasa_EA_Pg" class="form-input" placeholder="%" onchange="calcular_tasa_pg('EA')" />
+      <br>
+      <label for="tasa_NA_Pg" class="form-label">Nominal anual</label>
+      <input type="text" name="tasa_NA_Pg" id="tasa_NA_Pg" class="form-input" placeholder="%" onchange="calcular_tasa_pg('NA')" />
+      <br>
+      <label for="tasa_Ip_Pg" class="form-label">Interes periodico</label>
+      <input type="text" name="tasa_Ip_Pg" id="tasa_Ip_Pg" class="form-input" placeholder="%" onchange="calcular_tasa_pg('Ip')" />
+      <br>
+      <br>
+      <button id="button_pg" class="form-pg-button" onclick="return false;">Generar Cuadro</button>
+    </form>
+  </div>
+
+  <!-- Cuadro preview -->
+  <div id="credito_pg_prev" class="form-credito-pg-prev" style="display: none;">
+    <button id="button_pg_prev" class="form-pg-button-prev" onclick="return false;">Descargar Pdf</button>
+    <div class="form-header-pg-prev">
+      <h2 class="form-title-pg-prev">Vista previa</h2>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="js/Validar_Campos.js"></script>
+  <script type="text/javascript" src="js/Cuadro_pg.js"></script>
+  <script type="text/javascript" src="js/Formato_Campos.js"></script>
+  <script type="text/javascript" src="js/Cuadro_Cf.js"></script>
+</body>
+
+</html>

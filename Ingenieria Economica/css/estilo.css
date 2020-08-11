@@ -1,0 +1,204 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: : border-box;
+}
+
+body {
+  /*background: url(imagenes/economia.jpg);*/
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.democlass {
+  background: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+  font-family: sans-serif;
+  color: white;
+  text-align: center;
+  margin: auto;
+  width: 100%;
+  border: 2px solid #817E7B;
+}
+
+.datos_formulario .form .form-header .form-title {
+  font-weight: normal;
+  font-family: sans-serif;
+  color: #D7AF45;
+  text-align: center;
+  padding: 14px 0;
+}
+
+.datos_formulario .form {
+  background: rgba(0, 0, 0, 0.6);
+  width: 90%;
+  max-width: 750px;
+  margin: auto;
+  padding: 5px 35px;
+  margin-top: 30px;
+  padding-bottom: 30px;
+  border-radius: 3px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+}
+
+.form-cf-datos, .form-pg-datos, .form-credito-cf-prev, .form-credito-pg-prev {
+  background: rgba(0, 0, 0, 0.6);
+  width: 90%;
+  max-width: 750px;
+  margin: auto;
+  padding: 5px 35px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-radius: 3px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+}
+
+.form-cf-datos .form-title-cf, .form-pg-datos .form-title-pg, .form-header-cf-prev .form-title-cf-prev,.form-header-pg-prev .form-title-pg-prev {
+  font-weight: normal;
+  font-family: sans-serif;
+  color: #ff851b;
+  text-align: center;
+  padding: 14px 0;
+}
+
+.form-cf-datos .form-title-cf-ts, .form-pg-datos .form-title-pg-ts {
+  font-weight: normal;
+  font-family: sans-serif;
+  color: #ff851b;
+  padding: 14px 0;
+}
+
+.form-cf-datos select, .form-pg-datos select {
+  background: rgba(0, 0, 0, 0.7);
+  color: #9A9998;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #ff851b;
+  border-radius: 2px;
+  font-size: 14px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+  outline: none;
+}
+
+.datos_formulario .form .form-label, .form-cf-datos .form-label, .form-pg-datos .form-label {
+  display: block;
+  color: #ff851b;
+  font-size: 16px;
+  font-family: sans-serif;
+  position: relative;
+}
+
+.datos_formulario .form .form-input, .form-cf-datos .form-input, .form-pg-datos .form-input {
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #ff851b;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 2px;
+  font-size: 14px;
+  color: #fff;
+  font-family: sans-serif;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+}
+
+.form-cf-datos .form-cf-button, .form-pg-datos .form-pg-button {
+  width: 100%;
+  font-family: sans-serif;
+  outline: none;
+  background: #ff851b;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  padding: 15px 0;
+  cursor: pointer;
+  transition: all .5s ease;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+}
+
+.form-credito-cf-prev .form-cf-button-prev, .form-credito-pg-prev .form-pg-button-prev {
+  margin-top: 30px;
+  width: 100%;
+  font-family: sans-serif;
+  outline: none;
+  background: #ff851b;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  padding: 15px 0;
+  cursor: pointer;
+  transition: all .5s ease;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+}
+
+.form-cf-datos .form-cf-button:hover, .form-pg-datos .form-pg-button:hover, .form-credito-cf-prev .form-cf-button-prev:hover, .form-credito-pg-prev .form-pg-button-prev:hover {
+  background: #F29718;
+}
+
+.datos_formulario .form input[type="radio"] {
+  display: none;
+}
+
+.datos_formulario .form .radio label {
+  color: #ff851b;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 5px 15px 5px 51px;
+  display: inline-block;
+  position: relative;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: sans-serif;
+  transition: all .6s ease;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+}
+
+.datos_formulario .form .radio label:hover {
+  background: rgba(255, 133, 27, 0.1);
+}
+
+.datos_formulario .form .radio label:before {
+  content: "";
+  width: 17px;
+  height: 17px;
+  display: inline-block;
+  background: none;
+  border: 2px solid #ff851b;
+  border-radius: 50%;
+  position: absolute;
+  left: 17px;
+  bottom: 4px;
+}
+
+.datos_formulario .form input[type="radio"]:checked+label {
+  padding: 5px 15px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+}
+
+.datos_formulario .form input[type="radio"]:checked+label:before {
+  display: none;
+}
+
+.form-credito-cf-prev .form-textarea-cf {
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #ff851b;
+  width: 100%;
+  height: 700px;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 2px;
+  font-size: 14px;
+  color: #FFF;
+  font-family: sans-serif;
+}
